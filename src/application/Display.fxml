@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="382.0" prefWidth="284.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<AnchorPane prefHeight="382.0" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
    <children>
       <Label layoutX="136.0" layoutY="46.0" text="0">
          <font>
@@ -15,27 +14,27 @@
          </font>
       </Label>
       <Separator layoutY="81.0" prefHeight="2.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0" />
-      <Button layoutX="31.0" layoutY="313.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="0" />
-      <Button layoutX="31.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="1" />
-      <Button layoutX="88.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="2" />
-      <Button layoutX="145.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="3" />
-      <Button layoutX="31.0" layoutY="198.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="4" />
-      <Button layoutX="88.0" layoutY="198.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="5" />
-      <Button layoutX="145.0" layoutY="198.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="6" />
-      <Button layoutX="31.0" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="7" />
-      <Button layoutX="88.0" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="8" />
-      <Button layoutX="145.0" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="9" />
-      <Button layoutX="203.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="-" />
-      <Button layoutX="203.0" layoutY="198.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="X" />
-      <Button layoutX="203.0" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="/" />
-      <Button layoutX="146.0" layoutY="313.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="=" />
-      <Button layoutX="203.0" layoutY="313.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="+" />
+      <Button layoutX="31.0" layoutY="313.0" mnemonicParsing="false" onAction="#btn0Press" prefHeight="50.0" prefWidth="50.0" text="0" />
+      <Button layoutX="31.0" layoutY="255.0" mnemonicParsing="false" onAction="#btn1Press" prefHeight="50.0" prefWidth="50.0" text="1" />
+      <Button layoutX="88.0" layoutY="255.0" mnemonicParsing="false" onAction="#btn2Press" prefHeight="50.0" prefWidth="50.0" text="2" />
+      <Button layoutX="145.0" layoutY="255.0" mnemonicParsing="false" onAction="#btn3Press" prefHeight="50.0" prefWidth="50.0" text="3" />
+      <Button layoutX="31.0" layoutY="198.0" mnemonicParsing="false" onAction="#btn4Press" prefHeight="50.0" prefWidth="50.0" text="4" />
+      <Button layoutX="88.0" layoutY="198.0" mnemonicParsing="false" onAction="#btn5Press" prefHeight="50.0" prefWidth="50.0" text="5" />
+      <Button layoutX="145.0" layoutY="198.0" mnemonicParsing="false" onAction="#btn6Press" prefHeight="50.0" prefWidth="50.0" text="6" />
+      <Button layoutX="31.0" layoutY="142.0" mnemonicParsing="false" onAction="#btn7Press" prefHeight="50.0" prefWidth="50.0" text="7" />
+      <Button layoutX="88.0" layoutY="142.0" mnemonicParsing="false" onAction="#btn8Press" prefHeight="50.0" prefWidth="50.0" text="8" />
+      <Button layoutX="145.0" layoutY="142.0" mnemonicParsing="false" onAction="#btn9Press" prefHeight="50.0" prefWidth="50.0" text="9" />
+      <Button layoutX="203.0" layoutY="255.0" mnemonicParsing="false" onAction="#btnSubtractPress" prefHeight="50.0" prefWidth="50.0" text="-" />
+      <Button layoutX="203.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnMultiplyPress" prefHeight="50.0" prefWidth="50.0" text="X" />
+      <Button layoutX="203.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnDividePress" prefHeight="50.0" prefWidth="50.0" text="/" />
+      <Button layoutX="146.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnEqualsPress" prefHeight="50.0" prefWidth="50.0" text="=" />
+      <Button layoutX="203.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnPlusPress" prefHeight="50.0" prefWidth="50.0" text="+" />
       <Label layoutX="89.0" text="Calculator" underline="true">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="89.0" layoutY="313.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="." />
-      <Button layoutX="88.0" layoutY="87.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="107.0" text="CE" />
+      <Button layoutX="89.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnDotPress" prefHeight="50.0" prefWidth="50.0" text="." />
+      <Button layoutX="88.0" layoutY="87.0" mnemonicParsing="false" onAction="#btnCEPress" prefHeight="50.0" prefWidth="107.0" text="CE" />
    </children>
 </AnchorPane>
