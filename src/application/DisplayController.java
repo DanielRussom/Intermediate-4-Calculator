@@ -1,93 +1,115 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class DisplayController {
+	@FXML
+	Label lblDisplay;
 
-@FXML
-private void btn0Press() {
-	System.out.println(0);
-}
+	private void updateDisplay(String currentValue) {
+		lblDisplay.setText(currentValue);
+	}
 
-@FXML
-private void btn1Press() {
-	System.out.println(1);
-}
+	@FXML
+	private void btn0Press() {
+		Calculator.recieveInput('0');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn2Press() {
-	System.out.println(2);
-}
+	@FXML
+	private void btn1Press() {
+		Calculator.recieveInput('1');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn3Press() {
-	System.out.println(3);
-}
+	@FXML
+	private void btn2Press() {
+		Calculator.recieveInput('2');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn4Press() {
-	System.out.println(4);
-}
+	@FXML
+	private void btn3Press() {
+		Calculator.recieveInput('3');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn5Press() {
-	System.out.println(5);
-}
+	@FXML
+	private void btn4Press() {
+		Calculator.recieveInput('4');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn6Press() {
-	System.out.println(6);
-}
+	@FXML
+	private void btn5Press() {
+		Calculator.recieveInput('5');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn7Press() {
-	System.out.println(7);
-}
+	@FXML
+	private void btn6Press() {
+		Calculator.recieveInput('6');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
+	@FXML
+	private void btn7Press() {
+		Calculator.recieveInput('7');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn8Press() {
-	System.out.println(8);
-}
+	@FXML
+	private void btn8Press() {
+		Calculator.recieveInput('8');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btn9Press() {
-	System.out.println(9);
-}
+	@FXML
+	private void btn9Press() {
+		Calculator.recieveInput('9');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btnDotPress() {
-	System.out.println(".");
-}
+	@FXML
+	private void btnDotPress() {
+		Calculator.recieveInput('.');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btnPlusPress() {
-	System.out.println("+");
-}
+	@FXML
+	private void btnPlusPress() {
+		Calculator.recieveInput('+');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btnSubtractPress() {
-	System.out.println("-");
-}
+	@FXML
+	private void btnSubtractPress() {
+		Calculator.recieveInput('-');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btnMultiplyPress() {
-	System.out.println("*");
-}
+	@FXML
+	private void btnMultiplyPress() {
+		Calculator.recieveInput('*');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btnDividePress() {
-	System.out.println("/");
-}
+	@FXML
+	private void btnDividePress() {
+		Calculator.recieveInput('/');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
+	@FXML
+	private void btnEqualsPress() {
+		Calculator.recieveInput('=');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 
-@FXML
-private void btnEqualsPress() {
-	System.out.println("=");
-}
-
-@FXML
-private void btnCEPress() {
-	System.out.println("CE");
-}
+	@FXML
+	private void btnCEPress() {
+		Calculator.recieveInput('C');
+		updateDisplay(Calculator.getCurrentValue());
+	}
 }
