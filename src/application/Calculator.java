@@ -10,20 +10,22 @@ public class Calculator {
 
 	/**
 	 * Handles receiving input
-	 * @param value - Char pressed
+	 * 
+	 * @param value
+	 *            - Char pressed
 	 */
 	public static void recieveInput(char value) {
 		// Checks if the value is a number
 		if (Character.isDigit(value)) {
 			// If at the end of a calculation, clears stored values
-			if(isEndOfEquation) {
+			if (isEndOfEquation) {
 				currentValue = "0";
 				secondValue = "";
 				operator = ' ';
 				isEndOfEquation = false;
 			}
 			// If midway through a calculation, stores the current value
-			if(isDuringEquation) {
+			if (isDuringEquation) {
 				isDuringEquation = false;
 				secondValue = currentValue;
 				currentValue = "0";
@@ -46,150 +48,161 @@ public class Calculator {
 			break;
 		case '+':
 			isEndOfEquation = false;
-			// Checks if an addition is already being performed
-			if (operator == '+' && secondValue.length()>0) {
-				// Performs the addition calculation
-				double result = performAddition(Double.parseDouble(currentValue), Double.parseDouble(secondValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
+			// Checks if an equation is already being performed
+			if (secondValue.length() > 0) {
+				// Performs the current calculation
+				handleEquation();
 				isDuringEquation = true;
 			} else {
-				// Sets the operator and moves the location of the values
-				operator = '+';
+				// Moves the location of the values
 				secondValue = currentValue;
 				currentValue = "0";
 			}
+			// Sets the operator
+			operator = '+';
 			break;
 		case '-':
 			isEndOfEquation = false;
-			if(operator == '-' && secondValue.length()>0) {
+			if (secondValue.length() > 0) {
 				// Performs the subtraction calculation
-				double result = performSubtraction(Double.parseDouble(secondValue), Double.parseDouble(currentValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
+				handleEquation();
+				// Clears the second value
 				isDuringEquation = true;
 			} else {
-				// Sets the operator and moves the location of the values
-				operator = '-';
+				// Moves the location of the values
 				secondValue = currentValue;
 				currentValue = "0";
 			}
+			// Sets the operator
+			operator = '-';
 			break;
 		case '*':
 			isEndOfEquation = false;
-			if(operator == '*' && secondValue.length()>0) {
-				// Performs the multiplication calculation
-				double result = performMultiplication(Double.parseDouble(currentValue), Double.parseDouble(secondValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
+			// Checks if an equation is already being performed
+			if (secondValue.length() > 0) {
+				// Performs the current calculation
+				handleEquation();
 				isDuringEquation = true;
 			} else {
-				// Sets the operator and moves the location of the values
-				operator = '*';
+				// Moves the location of the values
 				secondValue = currentValue;
 				currentValue = "0";
 			}
+			// Sets the operator
+			operator = '*';
 			break;
 		case '/':
 			isEndOfEquation = false;
-			if(operator == '/' && secondValue.length()>0) {
-				// Performs the division calculation
-				double result = performDivision(Double.parseDouble(secondValue), Double.parseDouble(currentValue));
-				System.out.println(result);
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
+			// Checks if an equation is already being performed
+			if (secondValue.length() > 0) {
+				// Performs the current calculation
+				handleEquation();
 				isDuringEquation = true;
 			} else {
-				// Sets the operator and moves the location of the values
-				operator = '/';
+				// Moves the location of the values
 				secondValue = currentValue;
 				currentValue = "0";
 			}
+			// Sets the operator
+			operator = '/';
 			break;
 		case '=':
-			if(secondValue.length()<1) {
+			if (secondValue.length() < 1) {
 				break;
 			}
 			isEndOfEquation = true;
-			if(operator=='+') {
-				double result = performAddition(Double.parseDouble(currentValue), Double.parseDouble(secondValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
-			} else if(operator=='-') {
-				double result = performSubtraction(Double.parseDouble(secondValue), Double.parseDouble(currentValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
-			}else if(operator=='*') {
-				double result = performMultiplication(Double.parseDouble(currentValue), Double.parseDouble(secondValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
-			}else if(operator=='/') {
-				double result = performDivision(Double.parseDouble(secondValue), Double.parseDouble(currentValue));
-				// Clears the second value 
-				secondValue = "";
-				currentValue = Double.toString(result);
-			}
+			handleEquation();
 			break;
+		// Clears all stored values
 		case 'C':
 			currentValue = "0";
 			secondValue = "";
 			operator = ' ';
 			isDuringEquation = false;
 			isEndOfEquation = false;
-			
 		}
-		System.out.println(currentValue);
+	}
+
+	public static void handleEquation() {
+		// Handles addition equations
+		if (operator == '+') {
+			double result = performAddition(Double.parseDouble(currentValue), Double.parseDouble(secondValue));
+			// Clears the second value
+			secondValue = "";
+			currentValue = Double.toString(result);
+			// Handles subtraction equations
+		} else if (operator == '-') {
+			double result = performSubtraction(Double.parseDouble(secondValue), Double.parseDouble(currentValue));
+			// Clears the second value
+			secondValue = "";
+			currentValue = Double.toString(result);
+			// Handles multiplication equations
+		} else if (operator == '*') {
+			double result = performMultiplication(Double.parseDouble(currentValue), Double.parseDouble(secondValue));
+			// Clears the second value
+			secondValue = "";
+			currentValue = Double.toString(result);
+			// Handles division equations
+		} else if (operator == '/') {
+			double result = performDivision(Double.parseDouble(secondValue), Double.parseDouble(currentValue));
+			// Clears the second value
+			secondValue = "";
+			currentValue = Double.toString(result);
+		}
 	}
 
 	/**
 	 * Handles addition equations
-	 * @param firstNumber - First number to be added
-	 * @param secondNumber - Second number to be added
+	 * 
+	 * @param firstNumber
+	 *            - First number to be added
+	 * @param secondNumber
+	 *            - Second number to be added
 	 * @return result - Result of addition
 	 */
 	public static double performAddition(double firstNumber, double secondNumber) {
 		return firstNumber + secondNumber;
 	}
-	
+
 	/**
 	 * Handles subtraction equations
-	 * @param firstNumber - First number to be subtracted
-	 * @param secondNumber - Second number to be subtracted
+	 * 
+	 * @param firstNumber
+	 *            - First number to be subtracted
+	 * @param secondNumber
+	 *            - Second number to be subtracted
 	 * @return result - Result of subtraction
 	 */
 	public static double performSubtraction(double firstNumber, double secondNumber) {
 		return firstNumber - secondNumber;
 	}
-	
+
 	/**
 	 * Handles multiplication equations
-	 * @param firstNumber - First number to be multiplied
-	 * @param secondNumber - Second number to be multiplied
+	 * 
+	 * @param firstNumber
+	 *            - First number to be multiplied
+	 * @param secondNumber
+	 *            - Second number to be multiplied
 	 * @return result - Result of multiplication
 	 */
 	public static double performMultiplication(double firstNumber, double secondNumber) {
 		return firstNumber * secondNumber;
 	}
-	
 
 	/**
 	 * Handles division equations
-	 * @param firstNumber - First number to be divided
-	 * @param secondNumber - Second number to be divided
+	 * 
+	 * @param firstNumber
+	 *            - First number to be divided
+	 * @param secondNumber
+	 *            - Second number to be divided
 	 * @return result - Result of division
 	 */
 	public static double performDivision(double firstNumber, double secondNumber) {
 		return firstNumber / secondNumber;
 	}
-	
-	
+
 	public static String getCurrentValue() {
 		return currentValue;
 	}
